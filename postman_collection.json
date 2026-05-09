@@ -13,8 +13,12 @@
 				"header": [],
 				"url": {
 					"raw": "{{base_url}}/",
-					"host": ["{{base_url}}"],
-					"path": [""]
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						""
+					]
 				},
 				"description": "Home route - shows available endpoints"
 			},
@@ -43,8 +47,12 @@
 				},
 				"url": {
 					"raw": "{{base_url}}/addSchool",
-					"host": ["{{base_url}}"],
-					"path": ["addSchool"]
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"addSchool"
+					]
 				},
 				"description": "Add a new school to the database"
 			},
@@ -79,8 +87,12 @@
 				},
 				"url": {
 					"raw": "{{base_url}}/addSchool",
-					"host": ["{{base_url}}"],
-					"path": ["addSchool"]
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"addSchool"
+					]
 				},
 				"description": "Add another school for testing"
 			},
@@ -102,8 +114,12 @@
 				},
 				"url": {
 					"raw": "{{base_url}}/addSchool",
-					"host": ["{{base_url}}"],
-					"path": ["addSchool"]
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"addSchool"
+					]
 				},
 				"description": "Add another school for testing"
 			},
@@ -116,8 +132,12 @@
 				"header": [],
 				"url": {
 					"raw": "{{base_url}}/listSchools?latitude=28.6139&longitude=77.2090",
-					"host": ["{{base_url}}"],
-					"path": ["listSchools"],
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"listSchools"
+					],
 					"query": [
 						{
 							"key": "latitude",
@@ -152,7 +172,7 @@
 	"variable": [
 		{
 			"key": "base_url",
-			"value": "http://localhost:3000",
+			"value": "https://educase-assgn-2b3u.onrender.com",
 			"type": "string"
 		}
 	]

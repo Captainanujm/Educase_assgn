@@ -27,11 +27,11 @@ app.post('/addSchool', async (req, res) => {
         // save data to db
         let query = `INSERT INTO schools (name, address, latitude, longitude) VALUES (?, ?, ?, ?)`;
         let values = [name, address, lat, lon];
-        
+
         let [result] = await db.query(query, values);
-        
+
         // console.log("data saved", result);
-        
+
         res.status(201).json({
             message: "school added successfully",
             schoolId: result.insertId
@@ -60,9 +60,9 @@ app.get('/listSchools', async (req, res) => {
         let finalSchoolsList = [];
 
         // calculate distance for each school
-        for(let i = 0; i < schools.length; i++) {
+        for (let i = 0; i < schools.length; i++) {
             let s = schools[i];
-            
+
             // haversine formula math calculation
             let lat1 = userLat;
             let lon1 = userLon;
@@ -72,12 +72,12 @@ app.get('/listSchools', async (req, res) => {
             let R = 6371; // earth radius in km
             let dLat = (lat2 - lat1) * (Math.PI / 180);
             let dLon = (lon2 - lon1) * (Math.PI / 180);
-            
-            let a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-                    Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
-                    Math.sin(dLon/2) * Math.sin(dLon/2);
-            
-            let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+            let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+            let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
             let dist = R * c;
 
             // add distance to object
@@ -86,13 +86,13 @@ app.get('/listSchools', async (req, res) => {
         }
 
         // sorting logic (bubble sort) nearest first
-        for(let i = 0; i < finalSchoolsList.length; i++) {
-            for(let j = 0; j < finalSchoolsList.length - 1; j++) {
-                if(finalSchoolsList[j].distance > finalSchoolsList[j+1].distance) {
+        for (let i = 0; i < finalSchoolsList.length; i++) {
+            for (let j = 0; j < finalSchoolsList.length - 1; j++) {
+                if (finalSchoolsList[j].distance > finalSchoolsList[j + 1].distance) {
                     // swap
                     let temp = finalSchoolsList[j];
-                    finalSchoolsList[j] = finalSchoolsList[j+1];
-                    finalSchoolsList[j+1] = temp;
+                    finalSchoolsList[j] = finalSchoolsList[j + 1];
+                    finalSchoolsList[j + 1] = temp;
                 }
             }
         }
